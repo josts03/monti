@@ -1,0 +1,8 @@
+{
+  "name": "Monti Portfolio",
+  "description": "Minimalist portfolio for Monti (images, animations, pricing, contact)",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
