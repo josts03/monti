@@ -1,5 +1,6 @@
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import Navigation from './Navigation';
+import { site } from '@/config/site';
 
 export default function Layout() {
   return (
@@ -8,8 +9,57 @@ export default function Layout() {
       <main className="flex-grow pt-[100px] pb-20">
         <Outlet />
       </main>
-      <footer className="border-t border-white/5 py-8 text-center text-sm text-muted">
-        <p>&copy; {new Date().getFullYear()} Monti. All rights reserved.</p>
+
+      <footer className="border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div>
+            <div className="text-2xl font-display font-medium mb-3">
+              <span className="italic">M</span>onti
+            </div>
+            <p className="text-muted text-sm font-light leading-relaxed max-w-xs">
+              Cover art, 3D illustration and motion design for artists who want their
+              release to look as serious as it sounds.
+            </p>
+          </div>
+
+          <div>
+            <div className="text-sm uppercase tracking-wider text-white/40 mb-4">Explore</div>
+            <nav className="flex flex-col space-y-2 text-sm text-muted">
+              <Link to="/concept-art" className="hover:text-white transition-colors">
+                Concept Art
+              </Link>
+              <Link to="/motion-art" className="hover:text-white transition-colors">
+                Motion Art
+              </Link>
+              <Link to="/pricing" className="hover:text-white transition-colors">
+                Pricing
+              </Link>
+              <Link to="/contact" className="hover:text-white transition-colors">
+                Start a project
+              </Link>
+            </nav>
+          </div>
+
+          <div>
+            <div className="text-sm uppercase tracking-wider text-white/40 mb-4">Contact</div>
+            <div className="flex flex-col space-y-2 text-sm text-muted">
+              <a href={`mailto:${site.email}`} className="hover:text-white transition-colors">
+                {site.email}
+              </a>
+              <a
+                href={site.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                Instagram {site.instagramHandle}
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-white/5 py-6 text-center text-sm text-muted">
+          <p>&copy; {new Date().getFullYear()} Monti. All rights reserved.</p>
+        </div>
       </footer>
     </div>
   );
