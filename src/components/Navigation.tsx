@@ -61,8 +61,8 @@ export default function Navigation() {
                   className="absolute top-full left-0 pt-4"
                 >
                   <div className="bg-[#111] border border-white/10 rounded-md py-2 min-w-[160px] shadow-xl">
-                    <Link to="/concept-art" className="block px-4 py-2 hover:bg-white/5 transition-colors">
-                      Concept Art
+                    <Link to="/cover-art" className="block px-4 py-2 hover:bg-white/5 transition-colors">
+                      Cover Art
                     </Link>
                     <Link to="/motion-art" className="block px-4 py-2 hover:bg-white/5 transition-colors">
                       Motion Art
@@ -144,8 +144,8 @@ export default function Navigation() {
           >
             <div className="flex flex-col px-6 py-6 space-y-4">
               <div className="text-sm text-muted uppercase tracking-wider mb-2">Portfolio</div>
-              <Link to="/concept-art" className="text-lg pl-4">
-                Concept Art
+              <Link to="/cover-art" className="text-lg pl-4">
+                Cover Art
               </Link>
               <Link to="/motion-art" className="text-lg pl-4">
                 Motion Art

@@ -21,7 +21,7 @@ export default function NotFound() {
           Your next cover could, though. Have a look at the work or head back home.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <PrimaryLink to="/concept-art">See the work</PrimaryLink>
+          <PrimaryLink to="/cover-art">See the work</PrimaryLink>
           <GhostLink to="/">Back home</GhostLink>
         </div>
       </motion.div>

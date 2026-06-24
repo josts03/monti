@@ -25,8 +25,8 @@ export default function Layout() {
           <div>
             <div className="text-sm uppercase tracking-wider text-white/40 mb-4">Explore</div>
             <nav className="flex flex-col space-y-2 text-sm text-muted">
-              <Link to="/concept-art" className="hover:text-white transition-colors">
-                Concept Art
+              <Link to="/cover-art" className="hover:text-white transition-colors">
+                Cover Art
               </Link>
               <Link to="/motion-art" className="hover:text-white transition-colors">
                 Motion Art

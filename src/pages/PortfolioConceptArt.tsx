@@ -4,12 +4,12 @@ import Seo from '@/components/Seo';
 import { PrimaryLink } from '@/components/Buttons';
 import { conceptArtItems } from '@/lib/gallery';
 
-export default function PortfolioConceptArt() {
+export default function PortfolioCoverArt() {
   return (
     <div className="w-full">
       <Seo
-        title="Concept Art"
-        description="Cover art concepts, digital paintings and 3D renders by Monti. Browse the full gallery — then get artwork built for your own release."
+        title="Cover Art"
+        description="Cover art, digital paintings and 3D renders by Monti. Browse the full gallery — then get artwork built for your own release."
       />
 
       <div className="max-w-7xl mx-auto px-6 mb-12 pt-12">
@@ -19,7 +19,7 @@ export default function PortfolioConceptArt() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl md:text-5xl font-display font-medium tracking-tighter mb-4">
-            Concept Art
+            Cover Art
           </h1>
           <p className="text-muted text-lg font-light max-w-2xl">
             Digital paintings, 3D renders and cover concepts. Every piece started as

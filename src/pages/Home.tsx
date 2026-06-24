@@ -77,7 +77,7 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <PrimaryLink to="/contact">Start your project</PrimaryLink>
-            <GhostLink to="/concept-art">See the work</GhostLink>
+            <GhostLink to="/cover-art">See the work</GhostLink>
           </div>
           <p className="mt-6 text-sm text-white/40 tracking-wide">
             Direct line to the designer · Revisions included · Files ready for every platform
@@ -113,7 +113,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="aspect-[3/4]"
             >
-              <Link to="/concept-art" aria-label={`View ${item.title} in the gallery`}>
+              <Link to="/cover-art" aria-label={`View ${item.title} in the gallery`}>
                 <img
                   src={item.url}
                   loading="lazy"
@@ -127,7 +127,7 @@ export default function Home() {
         </div>
         <div className="max-w-7xl mx-auto px-6 py-6 text-right">
           <Link
-            to="/concept-art"
+            to="/cover-art"
             className="text-sm uppercase tracking-wider text-muted hover:text-white transition-colors"
           >
             Full portfolio →
