@@ -1,5 +1,0 @@
-# TODO: replace your-domain.com with your real domain when you buy it
-User-agent: *
-Allow: /
-
-Sitemap: https://your-domain.com/sitemap.xml
