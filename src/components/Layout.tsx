@@ -1,6 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
 import Navigation from './Navigation';
 import { site } from '@/config/site';
+import logo from '@/assets/logo.webp';
 
 export default function Layout() {
   return (
@@ -13,9 +14,14 @@ export default function Layout() {
       <footer className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
-            <div className="text-2xl font-display font-medium mb-3">
-              <span className="italic">M</span>onti
-            </div>
+            <img
+              src={logo}
+              alt="Monti"
+              width={480}
+              height={210}
+              loading="lazy"
+              className="h-16 w-auto mb-3"
+            />
             <p className="text-muted text-sm font-light leading-relaxed max-w-xs">
               Cover art, 3D illustration and motion design for artists who want their
               release to look as serious as it sounds.

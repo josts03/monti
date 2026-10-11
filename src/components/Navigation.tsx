@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { site } from '@/config/site';
+import logo from '@/assets/logo.webp';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,12 +35,8 @@ export default function Navigation() {
       )}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <Link
-          to="/"
-          aria-label="Monti — home"
-          className="text-2xl font-display font-medium tracking-tighter"
-        >
-          <span className="italic">M</span>
+        <Link to="/" aria-label="Monti — home">
+          <img src={logo} alt="" width={480} height={210} className="h-14 w-auto -my-2" />
         </Link>
 
         {/* Desktop Nav */}
