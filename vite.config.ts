@@ -11,6 +11,10 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, './src'),
       },
     },
+    build: {
+      // Keep in sync with vercel.json: this folder is excluded from the SPA rewrite
+      assetsDir: 'static',
+    },
     server: {
       hmr: process.env.DISABLE_HMR !== 'true',
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
