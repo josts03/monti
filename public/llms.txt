@@ -1,8 +1,8 @@
 # Monti
 
-> Monti is an independent designer creating cover art, 3D illustration and
-> Spotify Canvas loops for musicians. Work is delivered ready for streaming,
-> social media and print, with up to 3 revision rounds included on every project.
+> Monti is an independent designer creating cover art and Spotify Canvas loops for
+> musicians. Work is delivered ready for streaming, social media and print,
+> with up to 3 revision rounds included on every project.
 
 ## About
 
@@ -14,7 +14,6 @@ Spotify, Apple Music, social platforms and print.
 ## Services and pricing (EUR)
 
 - Cover Art Design — from €150. Single, EP or album artwork.
-- 3D Illustration — from €250. Full 3D scenes built and lit from scratch.
 - Animation / Spotify Canvas Visualizer — from €300. Loops (3–8s) in 1080p or 4K.
 - Full Album Visual Identity — custom quote. Cover, motion and supporting assets.
 
@@ -29,8 +28,8 @@ Every project includes up to 3 revision rounds.
 ## Pages
 
 - Home: overview of services, process and selected work.
-- Cover Art: full gallery of cover art, digital paintings and 3D renders.
-- Motion Art: Spotify Canvas loops, visualizers and 3D animation.
+- Cover Art: full gallery of cover art and digital paintings.
+- Motion Art: Spotify Canvas loops and visualizers.
 - Pricing: detailed pricing for each service.
 - Contact: project brief / booking form.
 

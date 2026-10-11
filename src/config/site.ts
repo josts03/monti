@@ -11,8 +11,7 @@ export const site = {
   // TODO: replace with your real domain once you buy it (no trailing slash)
   url: 'https://your-domain.com',
 
-  // TODO: replace with your real email address
-  email: 'info@monti.com',
+  email: 'montibambam@gmail.com',
 
   instagram: 'https://www.instagram.com/montimoltisanti/',
   instagramHandle: '@montimoltisanti',
@@ -24,9 +23,9 @@ export const site = {
    * will submit directly. While this is empty, the form falls back to
    * opening the visitor's email app with the brief pre-filled.
    */
-  formEndpoint: '',
+  formEndpoint: 'https://formspree.io/f/xrpekjpv',
 };
 
 export function pageTitle(title?: string): string {
-  return title ? `${title} — ${site.name}` : `${site.name} — Cover Art, 3D & Spotify Canvas for Artists`;
+  return title ? `${title} — ${site.name}` : `${site.name} — Cover Art & Spotify Canvas for Artists`;
 }

@@ -11,11 +11,6 @@ const services = [
     text: 'Single, EP or album artwork — delivered ready for Spotify, Apple Music, socials and print.',
   },
   {
-    title: '3D Illustration',
-    price: 'from €250',
-    text: 'Full 3D scenes, built and lit from scratch. For covers, merch or worlds around your music.',
-  },
-  {
     title: 'Motion & Canvas',
     price: 'from €300',
     text: 'Spotify Canvas loops (3–8 s) and visualizers that keep eyes on your release while it plays.',
@@ -58,7 +53,7 @@ const reasons = [
 export default function Home() {
   return (
     <div className="w-full">
-      <Seo description="Cover art, 3D illustration and Spotify Canvas loops for artists who want their release to look as serious as it sounds. Covers from €150, revisions included." />
+      <Seo description="Cover art and Spotify Canvas loops for artists who want their release to look as serious as it sounds. Covers from €150, revisions included." />
 
       {/* Hero */}
       <section className="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-16">
@@ -72,7 +67,7 @@ export default function Home() {
             People see your cover before they hear your song.
           </h1>
           <p className="mt-8 text-lg md:text-xl text-muted font-light max-w-2xl leading-relaxed">
-            I'm Monti. I design cover art, 3D illustration and Spotify Canvas loops
+            I'm Monti. I design cover art and Spotify Canvas loops
             for artists who want their release to look as serious as it sounds.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
@@ -151,7 +146,7 @@ export default function Home() {
             the click to the loop that holds it.
           </p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((s, i) => (
             <motion.div
               key={s.title}

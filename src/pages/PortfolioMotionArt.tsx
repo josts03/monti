@@ -9,7 +9,7 @@ export default function PortfolioMotionArt() {
     <div className="w-full">
       <Seo
         title="Motion Art"
-        description="Spotify Canvas loops, visualizers and 3D animation by Monti — built to loop clean and keep eyes on your release while it plays."
+        description="Spotify Canvas loops and visualizers by Monti — built to loop clean and keep eyes on your release while it plays."
       />
 
       <div className="max-w-7xl mx-auto px-6 mb-12 pt-12">
@@ -22,7 +22,7 @@ export default function PortfolioMotionArt() {
             Motion Art
           </h1>
           <p className="text-muted text-lg font-light max-w-2xl">
-            Spotify Canvas loops, visualizers and 3D animation. A static cover gets the
+            Spotify Canvas loops and visualizers. A static cover gets the
             click — motion keeps people on your track. Click any piece to play it.
           </p>
         </motion.div>

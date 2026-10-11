@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '@/components/Seo';
@@ -7,7 +7,6 @@ import { site } from '@/config/site';
 
 const INQUIRY_TYPES = [
   'Cover Art',
-  '3D Illustration',
   'Animation / Visualizer',
   'Full Visual Identity',
   'Other',
@@ -28,9 +27,19 @@ export default function Contact() {
     budget: '',
     deadline: '',
     additionalDetails: '',
+    // Honeypot — hidden from people, bots fill it and Formspree drops the submission
+    gotcha: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<'idle' | 'sent' | 'mailto' | 'error'>('idle');
+  const statusRef = useRef<HTMLDivElement>(null);
+
+  // The submit button sits below the fold from the status message — bring it into view
+  useEffect(() => {
+    if (status !== 'idle') {
+      statusRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [status]);
 
   const buildBrief = () => `New project inquiry — ${formState.inquiryType || 'General'}
 
@@ -58,8 +67,17 @@ ${formState.additionalDetails}`;
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({
-            ...formState,
+            'Artist name': formState.artistName,
+            email: formState.email,
+            'Song title': formState.songTitle || '—',
+            Featuring: formState.featuringArtists || '—',
+            'Type of inquiry': formState.inquiryType,
+            'Order status': formState.orderPaid ? 'Already paid' : 'New inquiry (not paid)',
+            Budget: formState.budget,
+            Deadline: formState.deadline || 'Flexible',
+            Details: formState.additionalDetails,
             _subject: `New inquiry: ${formState.inquiryType} — ${formState.artistName}`,
+            _gotcha: formState.gotcha,
           }),
         });
         setStatus(res.ok ? 'sent' : 'error');
@@ -124,24 +142,36 @@ ${formState.additionalDetails}`;
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {status === 'sent' && (
-            <div className="bg-[#111] border border-green-500/30 p-4 text-green-400 text-sm">
-              Your brief is in. I'll get back to you at {formState.email || 'your email'} —
-              usually within a day or two.
-            </div>
-          )}
-          {status === 'mailto' && (
-            <div className="bg-[#111] border border-[#6da2ff]/30 p-4 text-[#6da2ff] text-sm">
-              Your email app should open with the brief pre-filled — just press send there.
-              If nothing opened, email me directly at {site.email}.
-            </div>
-          )}
-          {status === 'error' && (
-            <div className="bg-[#111] border border-red-500/30 p-4 text-red-400 text-sm">
-              Something went wrong sending the form. Email me directly at {site.email} —
-              I answer those too.
-            </div>
-          )}
+          <input
+            type="text"
+            name="_gotcha"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            value={formState.gotcha}
+            onChange={(e) => setFormState({ ...formState, gotcha: e.target.value })}
+            className="hidden"
+          />
+          <div ref={statusRef} role="status" className="empty:hidden">
+            {status === 'sent' && (
+              <div className="bg-[#111] border border-green-500/30 p-4 text-green-400 text-sm">
+                Your brief is in. I'll get back to you at {formState.email || 'your email'} —
+                usually within a day or two.
+              </div>
+            )}
+            {status === 'mailto' && (
+              <div className="bg-[#111] border border-[#6da2ff]/30 p-4 text-[#6da2ff] text-sm">
+                Your email app should open with the brief pre-filled — just press send there.
+                If nothing opened, email me directly at {site.email}.
+              </div>
+            )}
+            {status === 'error' && (
+              <div className="bg-[#111] border border-red-500/30 p-4 text-red-400 text-sm">
+                Something went wrong sending the form. Email me directly at {site.email} —
+                I answer those too.
+              </div>
+            )}
+          </div>
 
           <div className="space-y-2">
             <label className="text-[15px] text-gray-200 block">

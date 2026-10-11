@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Seo from '@/components/Seo';
+import { cn } from '@/lib/utils';
 
 const services = [
   {
@@ -15,18 +16,6 @@ const services = [
       'Up to 3 revision rounds included',
       'High-res masters: streaming, print & vinyl',
       'Sized for Spotify, Apple Music & socials',
-    ],
-  },
-  {
-    title: '3D Illustration',
-    price: 'From €250',
-    slug: '3D Illustration',
-    popular: false,
-    features: [
-      'Full 3D scene, modelling and lighting',
-      'Personal or commercial use',
-      'Up to 3 revision rounds included',
-      'High-resolution delivery',
     ],
   },
   {
@@ -83,7 +72,7 @@ export default function Pricing() {
     <div className="max-w-7xl mx-auto px-6 py-12">
       <Seo
         title="Pricing — Cover Art from €150"
-        description="Transparent pricing: cover art from €150, 3D illustration from €250, Spotify Canvas and visualizers from €300. Up to 3 revision rounds included on every project."
+        description="Transparent pricing: cover art from €150, Spotify Canvas and visualizers from €300. Up to 3 revision rounds included on every project."
       />
 
       <motion.div
@@ -102,18 +91,20 @@ export default function Pricing() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {services.map((service, index) => (
           <motion.div
             key={service.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={
+            className={cn(
               service.popular
                 ? 'relative bg-[#111] border border-[#6da2ff]/40 p-8 flex flex-col h-full'
-                : 'relative bg-[#111] border border-white/5 p-8 flex flex-col h-full hover:border-white/15 transition-colors'
-            }
+                : 'relative bg-[#111] border border-white/5 p-8 flex flex-col h-full hover:border-white/15 transition-colors',
+              // Odd card out spans the row while the grid is two columns wide
+              index === services.length - 1 && 'md:max-xl:col-span-2'
+            )}
           >
             {service.popular && (
               <span className="absolute -top-3 left-8 bg-[#6da2ff] text-black text-xs font-medium uppercase tracking-wider px-3 py-1">

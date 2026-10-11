@@ -1,7 +1,7 @@
-# Monti — Cover Art, 3D & Spotify Canvas
+# Monti — Cover Art & Spotify Canvas
 
-Portfolio and booking site for Monti: cover art, 3D illustration and Spotify
-Canvas loops for musicians. Built as a fast, static single-page React app.
+Portfolio and booking site for Monti: cover art and Spotify Canvas loops for
+musicians. Built as a fast, static single-page React app.
 
 ## Tech
 

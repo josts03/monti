@@ -23,7 +23,7 @@ export default function Layout() {
               className="h-16 w-auto mb-3"
             />
             <p className="text-muted text-sm font-light leading-relaxed max-w-xs">
-              Cover art, 3D illustration and motion design for artists who want their
+              Cover art and motion design for artists who want their
               release to look as serious as it sounds.
             </p>
           </div>
