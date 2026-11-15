@@ -35,7 +35,7 @@ export default function Navigation() {
       )}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <Link to="/" aria-label="Monti — home">
+        <Link to="/" aria-label="Monti home">
           <img src={logo} alt="" width={480} height={210} className="h-14 w-auto -my-2" />
         </Link>
 
@@ -116,7 +116,7 @@ export default function Navigation() {
             to="/contact"
             className="bg-[#6da2ff] text-black px-5 py-2.5 uppercase tracking-wider hover:bg-[#8ab5ff] transition-colors"
           >
-            Start a project
+            Start your project
           </Link>
         </nav>
 
@@ -164,7 +164,7 @@ export default function Navigation() {
                 to="/contact"
                 className="bg-[#6da2ff] text-black text-center px-5 py-3.5 uppercase tracking-wider font-medium"
               >
-                Start a project
+                Start your project
               </Link>
             </div>
           </motion.div>

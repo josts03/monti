@@ -68,11 +68,6 @@ function MediaCard({
           className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
         />
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end pointer-events-none">
-        <div className="p-6 text-white w-full">
-          <h3 className="font-display font-medium text-lg tracking-wide">{item.title}</h3>
-        </div>
-      </div>
     </motion.button>
   );
 }

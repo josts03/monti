@@ -34,6 +34,8 @@ export default function Seo({ title, description, noIndex = false }: SeoProps) {
     setMeta('property', 'og:title', fullTitle);
     setMeta('property', 'og:description', description);
     setMeta('property', 'og:url', url);
+    setMeta('name', 'twitter:title', fullTitle);
+    setMeta('name', 'twitter:description', description);
     setMeta('name', 'robots', noIndex ? 'noindex, nofollow' : 'index, follow');
 
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');

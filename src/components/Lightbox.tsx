@@ -163,9 +163,6 @@ export default function Lightbox({ items, index, onClose, onNavigate }: Lightbox
                     className="max-w-full max-h-[82vh]"
                   />
                 )}
-                <div className="mt-4 text-center text-white/60 font-display tracking-wide text-sm">
-                  {item.title}
-                </div>
               </motion.div>
             </AnimatePresence>
           </div>

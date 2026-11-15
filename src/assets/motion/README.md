@@ -4,7 +4,7 @@ Drop your video loops into this folder and they appear on the Motion Art page
 automatically — no code changes.
 
 - Allowed formats: `.mp4` (best), `.webm`
-- The filename becomes the title: `fire-canvas.mp4` → "Fire Canvas"
+- Filenames are not shown on the site, so name the files however you like
 - Files are sorted by name — prefix with numbers to control order.
 - Optional poster/thumbnail: add an image with the SAME filename,
   e.g. `fire-canvas.mp4` + `fire-canvas.jpg`. The image is shown in the

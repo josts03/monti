@@ -25,7 +25,7 @@ const services = [
     popular: false,
     features: [
       'Spotify Canvas (3–8 s) or YouTube loop',
-      'Seamless loop, built for replay',
+      'Loops cleanly, built for replay',
       'Audio-reactive on request',
       '1080p or 4K delivery',
     ],
@@ -47,23 +47,23 @@ const services = [
 const faqs = [
   {
     q: 'How fast will I get my artwork?',
-    a: "It depends on scope and the current queue. Tell me your release date in the brief and I'll confirm the timeline before anything starts — no surprises mid-project.",
+    a: "It depends on scope and the current queue. Tell me your release date in the brief and I'll confirm the timeline before anything starts.",
   },
   {
     q: 'What do you need from me to start?',
     a: 'The song (a demo is fine), any references or moods you like, your deadline, and where the artwork will live. The contact form walks you through all of it.',
   },
   {
-    q: 'What if I don’t like the first concept?',
-    a: 'Up to 3 revision rounds are included in every project. We iterate until it fits — that’s what the rounds are for.',
+    q: "What if I don't like the first concept?",
+    a: "Up to 3 revision rounds are included in every project, and that's exactly what they're for.",
   },
   {
     q: 'What files do I get?',
-    a: 'High-resolution masters plus exports sized for each platform — streaming, socials, and print or vinyl if you need it. You upload, it fits.',
+    a: 'High-resolution masters plus exports sized for each platform: streaming, socials, and print or vinyl if you need it.',
   },
   {
     q: 'Can you match a visual style I already have?',
-    a: 'Yes. Send your existing artwork or brand references and I’ll build on them instead of starting from zero.',
+    a: "Yes. Send your existing artwork or brand references and I'll build on them instead of starting from zero.",
   },
 ];
 
@@ -71,8 +71,8 @@ export default function Pricing() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       <Seo
-        title="Pricing — Cover Art from €150"
-        description="Transparent pricing: cover art from €150, Spotify Canvas and visualizers from €300. Up to 3 revision rounds included on every project."
+        title="Pricing: Cover Art from €150"
+        description="Cover art from €150, Spotify Canvas and visualizers from €300. Up to 3 revision rounds included on every project."
       />
 
       <motion.div
@@ -82,12 +82,12 @@ export default function Pricing() {
         className="mb-16 text-center max-w-2xl mx-auto"
       >
         <h1 className="text-4xl md:text-5xl font-display font-medium tracking-tighter mb-6">
-          Pricing & Services
+          Pricing & services
         </h1>
         <p className="text-muted text-lg font-light">
-          Every price below is a starting point — the final quote depends on scope and
-          deadline. You'll always know the exact number before we start, and it won't
-          change mid-project.
+          Every price below is a starting point. The final quote depends on scope and
+          deadline, you'll know the exact number before we start, and it won't change
+          mid-project.
         </p>
       </motion.div>
 
@@ -111,7 +111,7 @@ export default function Pricing() {
                 Most booked
               </span>
             )}
-            <h3 className="text-xl font-display font-medium mb-2">{service.title}</h3>
+            <h2 className="text-xl font-display font-medium mb-2">{service.title}</h2>
             <div className="text-3xl font-display mb-6 text-[#6da2ff]">{service.price}</div>
 
             <ul className="space-y-3 flex-grow">
@@ -175,7 +175,7 @@ export default function Pricing() {
         </div>
         <div className="text-center mt-12">
           <p className="text-muted font-light mb-6">
-            Something else on your mind? Ask before you book — it costs nothing.
+            Something else on your mind? Ask before you book, it costs nothing.
           </p>
           <Link
             to="/contact"

@@ -6,7 +6,8 @@
  *   Images  → drop files into  src/assets/concept-art/
  *   Videos  → drop files into  src/assets/motion/
  *
- * - The filename becomes the title: "neon-samurai.jpg" → "Neon Samurai".
+ * - Filenames are never shown on the site. Each piece gets a generic label
+ *   ("Cover art 3") that is only used for alt text and screen readers.
  * - Files are sorted by name. Prefix with numbers to control the order:
  *   "01-album-cover.jpg", "02-dragon.png", …
  * - For each video you can add a poster (thumbnail) image with the SAME
@@ -46,15 +47,6 @@ function baseName(path: string): string {
   return file.replace(/\.[^.]+$/, '');
 }
 
-/** "01-neon-samurai" → "Neon Samurai" */
-function titleFromFile(path: string): string {
-  return baseName(path)
-    .replace(/^\d+[-_.\s]*/, '')
-    .replace(/[-_]+/g, ' ')
-    .trim()
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
 function sortedEntries(glob: Record<string, string>): [string, string][] {
   return Object.entries(glob).sort(([a], [b]) =>
     a.localeCompare(b, undefined, { numeric: true })
@@ -62,10 +54,10 @@ function sortedEntries(glob: Record<string, string>): [string, string][] {
 }
 
 function buildImageItems(glob: Record<string, string>, prefix: string): GalleryItem[] {
-  return sortedEntries(glob).map(([path, url], i) => ({
+  return sortedEntries(glob).map(([, url], i) => ({
     id: `${prefix}-${i}`,
     url,
-    title: titleFromFile(path),
+    title: `Cover art ${i + 1}`,
     type: 'image' as const,
   }));
 }
@@ -81,7 +73,7 @@ function buildVideoItems(
   return sortedEntries(videos).map(([path, url], i) => ({
     id: `${prefix}-${i}`,
     url,
-    title: titleFromFile(path),
+    title: `Motion piece ${i + 1}`,
     type: 'video' as const,
     poster: posterByBase.get(baseName(path)),
   }));

@@ -8,7 +8,7 @@ const services = [
   {
     title: 'Cover Art',
     price: 'from €150',
-    text: 'Single, EP or album artwork — delivered ready for Spotify, Apple Music, socials and print.',
+    text: 'Single, EP or album artwork, delivered ready for Spotify, Apple Music, socials and print.',
   },
   {
     title: 'Motion & Canvas',
@@ -21,32 +21,32 @@ const steps = [
   {
     n: '01',
     title: 'Send the brief',
-    text: 'The song, your references, the deadline. The form takes a few minutes — the more you give me, the better the first concept lands.',
+    text: 'The song, your references, the deadline. The form takes a few minutes, and the more you give me, the closer the first concept lands.',
   },
   {
     n: '02',
     title: 'We shape it',
-    text: 'I design, you react. Up to 3 revision rounds are included on every project, so we stop when it’s right — not when the meter runs out.',
+    text: "I design, you react. Up to 3 revision rounds are included on every project, so there's room to get it right.",
   },
   {
     n: '03',
     title: 'You release',
-    text: 'You get high-res masters plus exports sized for every platform. Upload, announce, done.',
+    text: "You get high-res masters plus exports sized for every platform, so all that's left is to upload and announce.",
   },
 ];
 
 const reasons = [
   {
     title: 'You talk to the person doing the work',
-    text: 'No agency, no middleman. You brief me, I design, you get answers from the same hands that make the art.',
+    text: 'No agency and no middleman. You brief me, and your answers come from the same hands that make the art.',
   },
   {
     title: 'Built for the platforms',
-    text: 'Files arrive ready for streaming, socials and print — correct sizes, correct formats, no “can you resize this” the night before release.',
+    text: 'Files arrive ready for streaming, socials and print, in the right sizes and formats. No "can you resize this" the night before release.',
   },
   {
     title: 'Revisions are part of the deal',
-    text: 'Up to 3 rounds included on every project. We iterate until the artwork matches the sound in your head.',
+    text: 'Up to 3 rounds are included on every project, which gives us room to get the artwork matching the sound in your head.',
   },
 ];
 
@@ -142,8 +142,8 @@ export default function Home() {
             What I make
           </h2>
           <p className="text-muted font-light max-w-2xl mb-12">
-            Everything a release needs to look intentional — from the square that sells
-            the click to the loop that holds it.
+            What a release needs to look intentional: the square that sells the click
+            and the loop that holds it.
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

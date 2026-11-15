@@ -1,5 +1,4 @@
-# TODO: replace your-domain.com with your real domain when you buy it
 User-agent: *
 Allow: /
 
-Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://monti-xi.vercel.app/sitemap.xml

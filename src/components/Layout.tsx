@@ -41,7 +41,7 @@ export default function Layout() {
                 Pricing
               </Link>
               <Link to="/contact" className="hover:text-white transition-colors">
-                Start a project
+                Start your project
               </Link>
             </nav>
           </div>

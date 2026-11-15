@@ -27,26 +27,26 @@ export default function Contact() {
     budget: '',
     deadline: '',
     additionalDetails: '',
-    // Honeypot — hidden from people, bots fill it and Formspree drops the submission
+    // Honeypot: hidden from people, bots fill it and Formspree drops the submission
     gotcha: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<'idle' | 'sent' | 'mailto' | 'error'>('idle');
   const statusRef = useRef<HTMLDivElement>(null);
 
-  // The submit button sits below the fold from the status message — bring it into view
+  // The submit button sits below the fold from the status message, so bring it into view
   useEffect(() => {
     if (status !== 'idle') {
       statusRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }, [status]);
 
-  const buildBrief = () => `New project inquiry — ${formState.inquiryType || 'General'}
+  const buildBrief = () => `New project inquiry: ${formState.inquiryType || 'General'}
 
 Artist name: ${formState.artistName}
 Email: ${formState.email}
-Song title: ${formState.songTitle || '—'}
-Featuring: ${formState.featuringArtists || '—'}
+Song title: ${formState.songTitle || '-'}
+Featuring: ${formState.featuringArtists || '-'}
 Type of inquiry: ${formState.inquiryType}
 Order status: ${formState.orderPaid ? 'Already paid' : 'New inquiry (not paid)'}
 Budget: ${formState.budget}
@@ -61,7 +61,7 @@ ${formState.additionalDetails}`;
     setStatus('idle');
 
     if (site.formEndpoint) {
-      // Direct submission via Formspree/Web3Forms — see src/config/site.ts
+      // Direct submission via Formspree/Web3Forms, see src/config/site.ts
       try {
         const res = await fetch(site.formEndpoint, {
           method: 'POST',
@@ -69,14 +69,14 @@ ${formState.additionalDetails}`;
           body: JSON.stringify({
             'Artist name': formState.artistName,
             email: formState.email,
-            'Song title': formState.songTitle || '—',
-            Featuring: formState.featuringArtists || '—',
+            'Song title': formState.songTitle || '-',
+            Featuring: formState.featuringArtists || '-',
             'Type of inquiry': formState.inquiryType,
             'Order status': formState.orderPaid ? 'Already paid' : 'New inquiry (not paid)',
             Budget: formState.budget,
             Deadline: formState.deadline || 'Flexible',
             Details: formState.additionalDetails,
-            _subject: `New inquiry: ${formState.inquiryType} — ${formState.artistName}`,
+            _subject: `New inquiry: ${formState.inquiryType} (${formState.artistName})`,
             _gotcha: formState.gotcha,
           }),
         });
@@ -87,7 +87,7 @@ ${formState.additionalDetails}`;
     } else {
       // No backend configured yet → open the visitor's email app, brief pre-filled
       const subject = encodeURIComponent(
-        `Project inquiry: ${formState.inquiryType} — ${formState.artistName}`
+        `Project inquiry: ${formState.inquiryType} (${formState.artistName})`
       );
       const body = encodeURIComponent(buildBrief());
       window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
@@ -107,8 +107,8 @@ ${formState.additionalDetails}`;
   return (
     <div className="max-w-2xl mx-auto px-6 py-12">
       <Seo
-        title="Start Your Project"
-        description="Tell me about your release — the song, the vibe, the deadline. Every brief is read and answered personally. Cover art from €150."
+        title="Start your project"
+        description="Tell me about your release: the song, the vibe, the deadline. Every brief is read and answered personally. Cover art from €150."
       />
 
       <motion.div
@@ -122,7 +122,7 @@ ${formState.additionalDetails}`;
 
         <div className="space-y-4 text-[15px] font-light text-gray-200 leading-relaxed mb-10">
           <p>
-            Tell me about your release — the song, the vibe, the deadline. The more you
+            Tell me about your release: the song, the vibe, the deadline. The more you
             put in the brief, the closer the first concept lands. I read and answer every
             inquiry myself.
           </p>
@@ -131,7 +131,7 @@ ${formState.additionalDetails}`;
             <Link to="/pricing" className="text-[#6da2ff] hover:underline font-medium">
               pricing & services
             </Link>{' '}
-            first — covers start at €150 and every project includes up to 3 revision rounds.
+            first. Covers start at €150 and every project includes up to 3 revision rounds.
           </p>
           <p className="italic">
             Prefer email? Write me directly:{' '}
@@ -155,31 +155,32 @@ ${formState.additionalDetails}`;
           <div ref={statusRef} role="status" className="empty:hidden">
             {status === 'sent' && (
               <div className="bg-[#111] border border-green-500/30 p-4 text-green-400 text-sm">
-                Your brief is in. I'll get back to you at {formState.email || 'your email'} —
+                Your brief is in. I'll get back to you at {formState.email || 'your email'},
                 usually within a day or two.
               </div>
             )}
             {status === 'mailto' && (
               <div className="bg-[#111] border border-[#6da2ff]/30 p-4 text-[#6da2ff] text-sm">
-                Your email app should open with the brief pre-filled — just press send there.
+                Your email app should open with the brief pre-filled, just press send there.
                 If nothing opened, email me directly at {site.email}.
               </div>
             )}
             {status === 'error' && (
               <div className="bg-[#111] border border-red-500/30 p-4 text-red-400 text-sm">
-                Something went wrong sending the form. Email me directly at {site.email} —
+                Something went wrong sending the form. Email me directly at {site.email},
                 I answer those too.
               </div>
             )}
           </div>
 
           <div className="space-y-2">
-            <label className="text-[15px] text-gray-200 block">
-              Main Artist Name / Main Logo Text{' '}
+            <label htmlFor="artistName" className="text-[15px] text-gray-200 block">
+              Main artist name / main logo text{' '}
               <span className="text-gray-500 text-sm">(required)</span>
             </label>
             <input
               required
+              id="artistName"
               type="text"
               value={formState.artistName}
               onChange={(e) => setFormState({ ...formState, artistName: e.target.value })}
@@ -189,12 +190,14 @@ ${formState.additionalDetails}`;
           </div>
 
           <div className="space-y-2">
-            <label className="text-[15px] text-gray-200 block">
+            <label htmlFor="email" className="text-[15px] text-gray-200 block">
               Email <span className="text-gray-500 text-sm">(required)</span>
             </label>
             <input
               required
+              id="email"
               type="email"
+              autoComplete="email"
               value={formState.email}
               onChange={(e) => setFormState({ ...formState, email: e.target.value })}
               className="w-full bg-white text-black px-3 py-2.5 focus:outline-none"
@@ -202,8 +205,9 @@ ${formState.additionalDetails}`;
           </div>
 
           <div className="space-y-2">
-            <label className="text-[15px] text-gray-200 block">Song Title</label>
+            <label htmlFor="songTitle" className="text-[15px] text-gray-200 block">Song title</label>
             <input
+              id="songTitle"
               type="text"
               value={formState.songTitle}
               onChange={(e) => setFormState({ ...formState, songTitle: e.target.value })}
@@ -213,8 +217,9 @@ ${formState.additionalDetails}`;
           </div>
 
           <div className="space-y-2">
-            <label className="text-[15px] text-gray-200 block">Featuring Artist(s)</label>
+            <label htmlFor="featuringArtists" className="text-[15px] text-gray-200 block">Featuring artist(s)</label>
             <input
+              id="featuringArtists"
               type="text"
               value={formState.featuringArtists}
               onChange={(e) => setFormState({ ...formState, featuringArtists: e.target.value })}
@@ -224,12 +229,13 @@ ${formState.additionalDetails}`;
           </div>
 
           <div className="space-y-2">
-            <label className="text-[15px] text-gray-200 block">
-              Type Of Inquiry <span className="text-gray-500 text-sm">(required)</span>
+            <label htmlFor="inquiryType" className="text-[15px] text-gray-200 block">
+              Type of inquiry <span className="text-gray-500 text-sm">(required)</span>
             </label>
             <div className="relative">
               <select
                 required
+                id="inquiryType"
                 value={formState.inquiryType}
                 onChange={(e) => setFormState({ ...formState, inquiryType: e.target.value })}
                 className="w-full bg-white text-black px-3 py-2.5 appearance-none focus:outline-none"
@@ -256,18 +262,17 @@ ${formState.additionalDetails}`;
           </div>
 
           <div className="space-y-2 pt-2">
-            <label className="text-[15px] text-gray-200 block">Reference Images & Examples</label>
+            <div className="text-[15px] text-gray-200">Reference images & examples</div>
             <p className="text-sm text-gray-500 leading-relaxed">
               Got moodboards, sketches or covers you like? Mention them in the details below
-              and attach the files when we continue over email — references make the first
-              concept land much closer.
+              and attach the files when we continue over email.
             </p>
           </div>
 
           <div className="space-y-3 pt-4">
-            <label className="text-[15px] text-gray-200 block">
-              Order Status <span className="text-gray-500 text-sm">(required)</span>
-            </label>
+            <div className="text-[15px] text-gray-200">
+              Order status <span className="text-gray-500 text-sm">(required)</span>
+            </div>
             <div className="space-y-2">
               <label className="flex items-center space-x-3 cursor-pointer">
                 <input
@@ -278,7 +283,7 @@ ${formState.additionalDetails}`;
                   className="w-4 h-4 bg-white rounded-none cursor-pointer border-0 accent-blue-500"
                 />
                 <span className="text-[15px] text-gray-200">
-                  New inquiry — I haven't paid anything yet
+                  New inquiry, I haven't paid anything yet
                 </span>
               </label>
               <label className="flex items-center space-x-3 cursor-pointer">
@@ -290,54 +295,57 @@ ${formState.additionalDetails}`;
                   className="w-4 h-4 bg-white rounded-none cursor-pointer border-0 accent-blue-500"
                 />
                 <span className="text-[15px] text-gray-200">
-                  Returning client — my order is already paid
+                  Returning client, my order is already paid
                 </span>
               </label>
             </div>
           </div>
 
           <div className="space-y-2 pt-2">
-            <label className="text-[15px] text-gray-200 block">
+            <label htmlFor="budget" className="text-[15px] text-gray-200 block">
               Budget <span className="text-gray-500 text-sm">(required)</span>
             </label>
             <textarea
               required
+              id="budget"
               rows={3}
               value={formState.budget}
               onChange={(e) => setFormState({ ...formState, budget: e.target.value })}
               className="w-full bg-white text-black px-3 py-2.5 focus:outline-none resize-none placeholder:text-gray-400"
-              placeholder="ex. &quot;My budget for this artwork is €300&quot; — a range works too"
+              placeholder="e.g. &quot;My budget for this artwork is €300&quot;. A range works too."
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-[15px] text-gray-200 block">
-              Deadline / Release Date
+            <label htmlFor="deadline" className="text-[15px] text-gray-200 block">
+              Deadline / release date
             </label>
             <input
+              id="deadline"
               type="date"
               value={formState.deadline}
               onChange={(e) => setFormState({ ...formState, deadline: e.target.value })}
               className="w-full bg-white text-black px-3 py-2.5 focus:outline-none"
             />
             <p className="text-sm text-gray-500">
-              If you have a release date, tell me now — the queue decides the timeline.
+              If you have a release date, tell me now. The queue decides the timeline.
             </p>
           </div>
 
           <div className="space-y-2">
-            <label className="text-[15px] text-gray-200 block">
-              Additional Details <span className="text-gray-500 text-sm">(required)</span>
+            <label htmlFor="additionalDetails" className="text-[15px] text-gray-200 block">
+              Additional details <span className="text-gray-500 text-sm">(required)</span>
             </label>
             <textarea
               required
+              id="additionalDetails"
               rows={4}
               value={formState.additionalDetails}
               onChange={(e) =>
                 setFormState({ ...formState, additionalDetails: e.target.value })
               }
               className="w-full bg-white text-black px-3 py-2.5 focus:outline-none resize-none placeholder:text-gray-400"
-              placeholder="The vibe, the genre, the story of the track — anything that helps me hear what you hear."
+              placeholder="The vibe, the genre, the story of the track. Anything that helps me hear what you hear."
             />
           </div>
 
@@ -351,8 +359,8 @@ ${formState.additionalDetails}`;
               <ArrowRight className="w-4 h-4" />
             </button>
             <p className="mt-4 text-sm text-gray-500">
-              No commitment — sending a brief just starts the conversation. You'll get the
-              exact quote before anything is booked.
+              No commitment. Sending a brief just starts the conversation, and you'll get
+              the exact quote before anything is booked.
             </p>
           </div>
         </form>

@@ -1,15 +1,15 @@
 /**
  * Central site configuration.
  *
- * When you buy your domain and set up email, this is the ONLY file
- * you need to edit (plus index.html, public/sitemap.xml and
- * public/robots.txt — search for "your-domain" across the project).
+ * When a custom domain is connected, change `url` here and replace
+ * "monti-xi.vercel.app" in index.html, public/sitemap.xml,
+ * public/robots.txt and public/llms.txt.
  */
 export const site = {
   name: 'Monti',
 
-  // TODO: replace with your real domain once you buy it (no trailing slash)
-  url: 'https://your-domain.com',
+  // Live address, no trailing slash
+  url: 'https://monti-xi.vercel.app',
 
   email: 'montibambam@gmail.com',
 
@@ -27,5 +27,5 @@ export const site = {
 };
 
 export function pageTitle(title?: string): string {
-  return title ? `${title} — ${site.name}` : `${site.name} — Cover Art & Spotify Canvas for Artists`;
+  return title ? `${title} | ${site.name}` : `${site.name} | Cover Art & Spotify Canvas for Artists`;
 }

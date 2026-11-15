@@ -9,7 +9,7 @@ export default function PortfolioCoverArt() {
     <div className="w-full">
       <Seo
         title="Cover Art"
-        description="Cover art and digital paintings by Monti. Browse the full gallery — then get artwork built for your own release."
+        description="Cover art and digital paintings by Monti. Browse the full gallery, then get artwork built for your own release."
       />
 
       <div className="max-w-7xl mx-auto px-6 mb-12 pt-12">
@@ -23,7 +23,7 @@ export default function PortfolioCoverArt() {
           </h1>
           <p className="text-muted text-lg font-light max-w-2xl">
             Digital paintings and cover concepts. Every piece started as
-            someone's brief — click any of them to view the gallery full screen.
+            someone's brief. Click any of them to view it full screen.
           </p>
         </motion.div>
       </div>

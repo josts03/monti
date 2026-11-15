@@ -6,33 +6,35 @@
 
 ## About
 
-Monti (Monti Moltisanti) designs visual identity for music releases — the cover
-people see before they hear the song. Clients work directly with the designer:
-no agency, no middleman. Files arrive at the correct sizes and formats for
-Spotify, Apple Music, social platforms and print.
+Monti (Monti Moltisanti) designs the visuals for music releases, starting with
+the cover people see before they hear the song. Clients work directly with the
+designer, with no agency or middleman in between. Files arrive in the right
+sizes and formats for Spotify, Apple Music, social platforms and print.
 
 ## Services and pricing (EUR)
 
-- Cover Art Design — from €150. Single, EP or album artwork.
-- Animation / Spotify Canvas Visualizer — from €300. Loops (3–8s) in 1080p or 4K.
-- Full Album Visual Identity — custom quote. Cover, motion and supporting assets.
+- Cover Art Design: from €150. Single, EP or album artwork.
+- Animation / Visualizer: from €300. Spotify Canvas loops (3–8 s) or YouTube loops, in 1080p or 4K.
+- Full Visual Identity (Album): custom quote. Cover art, tracklist and promo graphics, social media assets and Spotify Canvas for the lead singles.
 
-Every project includes up to 3 revision rounds.
+Prices are starting points. The exact quote depends on scope and deadline and is
+confirmed before the project starts. Every project includes up to 3 revision rounds.
 
 ## Process
 
-1. Send the brief — the song, references and deadline.
-2. We shape it — the designer iterates with you across up to 3 revision rounds.
-3. You release — high-res masters plus exports sized for every platform.
+1. Send the brief: the song, references and deadline.
+2. We shape it: the designer works through up to 3 revision rounds with you.
+3. You release: high-res masters plus exports sized for every platform.
 
 ## Pages
 
-- Home: overview of services, process and selected work.
-- Cover Art: full gallery of cover art and digital paintings.
-- Motion Art: Spotify Canvas loops and visualizers.
-- Pricing: detailed pricing for each service.
-- Contact: project brief / booking form.
+- Home (https://monti-xi.vercel.app/): overview of services, process and selected work.
+- Cover Art (https://monti-xi.vercel.app/cover-art): full gallery of cover art and digital paintings.
+- Motion Art (https://monti-xi.vercel.app/motion-art): Spotify Canvas loops and visualizers.
+- Pricing (https://monti-xi.vercel.app/pricing): pricing for each service.
+- Contact (https://monti-xi.vercel.app/contact): project brief / booking form.
 
 ## Contact
 
+- Email: montibambam@gmail.com
 - Instagram: https://www.instagram.com/montimoltisanti/ (@montimoltisanti)

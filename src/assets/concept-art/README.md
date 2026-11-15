@@ -4,7 +4,7 @@ Drop your images into this folder and they appear on the Concept Art page
 automatically — no code changes.
 
 - Allowed formats: `.jpg`, `.jpeg`, `.png`, `.webp`, `.avif`, `.gif`
-- The filename becomes the title shown on hover: `neon-samurai.jpg` → "Neon Samurai"
+- Filenames are not shown on the site, so name the files however you like
 - Files are sorted by name — prefix with numbers to control order:
   `01-best-piece.jpg`, `02-second.jpg`, …
 - Recommended size: longest side ~2000–2560 px, JPG quality ~80 or WebP.
