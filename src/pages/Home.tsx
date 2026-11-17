@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import Seo from '@/components/Seo';
 import { PrimaryLink, GhostLink } from '@/components/Buttons';
+import FormatShowcase from '@/components/FormatShowcase';
 import { homeStripItems } from '@/lib/gallery';
 
 const services = [
@@ -171,6 +172,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* One release in every platform format */}
+      <FormatShowcase />
 
       {/* Why */}
       <section className="border-y border-white/5 bg-[#0d0d0d]">
