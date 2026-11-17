@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { Volume2, VolumeX } from 'lucide-react';
+import coverImg from '@/assets/concept-art/ROWABOAT.webp';
 import wideMp4 from '@/assets/formats/youtube-wide.mp4';
 import widePoster from '@/assets/formats/youtube-wide.webp';
 import verticalMp4 from '@/assets/formats/youtube-vertical.mp4';
@@ -9,16 +10,40 @@ import squareMp4 from '@/assets/formats/instagram-square.mp4';
 import squarePoster from '@/assets/formats/instagram-square.webp';
 
 /**
- * One release ("Row A Boat") cut for three platforms. The clips are 15 s
- * web previews; the delivered files are the full-length masters listed in `spec`.
+ * One client's full release ("Row A Boat"): the cover plus the lyric video
+ * cut for three platforms. The clips are 15 s web previews; the delivered
+ * files are the full-length masters listed in `spec`.
  *
- * Cards sit at equal height because each grid column's fr share equals its
- * aspect ratio (16/9 : 9/16 : 1 = 256 : 81 : 144). On phones the wide video
- * takes its own row and the other two share the next one.
+ * On desktop all four cards sit at equal height because each grid column's
+ * fr share equals its aspect ratio (1 : 16/9 : 9/16 : 1 = 144 : 256 : 81 : 144).
+ * On phones the cover and the wide video each take a full row and the other
+ * two share the last one.
  */
-const formats = [
+interface Piece {
+  id: string;
+  kind: 'image' | 'video';
+  src: string;
+  poster?: string;
+  ratio: number;
+  platform: string;
+  use: string;
+  spec: string;
+}
+
+const cover: Piece = {
+  id: 'cover',
+  kind: 'image',
+  src: coverImg,
+  ratio: 1,
+  platform: 'Cover art',
+  use: 'Spotify, Apple Music, socials and print',
+  spec: '1:1 · 4000×4000',
+};
+
+const videos: Piece[] = [
   {
     id: 'wide',
+    kind: 'video',
     src: wideMp4,
     poster: widePoster,
     ratio: 16 / 9,
@@ -28,6 +53,7 @@ const formats = [
   },
   {
     id: 'vertical',
+    kind: 'video',
     src: verticalMp4,
     poster: verticalPoster,
     ratio: 9 / 16,
@@ -37,6 +63,7 @@ const formats = [
   },
   {
     id: 'square',
+    kind: 'video',
     src: squareMp4,
     poster: squarePoster,
     ratio: 1,
@@ -44,16 +71,48 @@ const formats = [
     use: 'Square post in the grid and feed',
     spec: '1:1 · 2160×2160',
   },
-] as const;
+];
 
-type Format = (typeof formats)[number];
+function Caption({ piece }: { piece: Piece }) {
+  return (
+    <figcaption className="mt-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+        <span className="font-display font-medium">{piece.platform}</span>
+        <span className="text-xs text-[#6da2ff] tracking-wide whitespace-nowrap">
+          {piece.spec}
+        </span>
+      </div>
+      <p className="mt-1 text-muted text-sm font-light">{piece.use}</p>
+    </figcaption>
+  );
+}
 
-function FormatVideo({
-  format,
+function CoverCard({ piece }: { piece: Piece }) {
+  return (
+    <figure className="flex flex-col">
+      <div
+        className="relative overflow-hidden bg-[#111] border border-white/5"
+        style={{ aspectRatio: String(piece.ratio) }}
+      >
+        <img
+          src={piece.src}
+          alt='"Row A Boat" cover art'
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
+      <Caption piece={piece} />
+    </figure>
+  );
+}
+
+function VideoCard({
+  piece,
   unmuted,
   onToggleSound,
 }: {
-  format: Format;
+  piece: Piece;
   unmuted: boolean;
   onToggleSound: () => void;
 }) {
@@ -82,17 +141,17 @@ function FormatVideo({
     <figure className="flex flex-col">
       <div
         className="relative overflow-hidden bg-[#111] border border-white/5"
-        style={{ aspectRatio: String(format.ratio) }}
+        style={{ aspectRatio: String(piece.ratio) }}
       >
         <video
           ref={ref}
-          src={format.src}
-          poster={format.poster}
+          src={piece.src}
+          poster={piece.poster}
           muted
           loop
           playsInline
           preload="none"
-          aria-label={`${format.platform} version, ${format.spec}`}
+          aria-label={`${piece.platform} version, ${piece.spec}`}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <button
@@ -105,28 +164,20 @@ function FormatVideo({
           {unmuted ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
         </button>
       </div>
-      <figcaption className="mt-4">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-          <span className="font-display font-medium">{format.platform}</span>
-          <span className="text-xs text-[#6da2ff] tracking-wide whitespace-nowrap">
-            {format.spec}
-          </span>
-        </div>
-        <p className="mt-1 text-muted text-sm font-light">{format.use}</p>
-      </figcaption>
+      <Caption piece={piece} />
     </figure>
   );
 }
 
 export default function FormatShowcase() {
   const [unmutedId, setUnmutedId] = useState<string | null>(null);
-  const [wide, vertical, square] = formats;
+  const [wide, vertical, square] = videos;
 
-  const card = (format: Format) => (
-    <FormatVideo
-      format={format}
-      unmuted={unmutedId === format.id}
-      onToggleSound={() => setUnmutedId((id) => (id === format.id ? null : format.id))}
+  const video = (piece: Piece) => (
+    <VideoCard
+      piece={piece}
+      unmuted={unmutedId === piece.id}
+      onToggleSound={() => setUnmutedId((id) => (id === piece.id ? null : piece.id))}
     />
   );
 
@@ -142,9 +193,9 @@ export default function FormatShowcase() {
           One release, every format
         </h2>
         <p className="text-muted font-light max-w-2xl mb-12">
-          The lyric video for "Row A Boat", framed three ways. Each platform crops
-          differently, so every version is laid out for its own screen instead of
-          being cut down from one file.
+          Everything made for one client's single, "Row A Boat": the cover, plus the
+          lyric video framed three ways. Each platform crops differently, so every
+          version is laid out for its own screen instead of being cut down from one file.
         </p>
       </motion.div>
 
@@ -153,11 +204,14 @@ export default function FormatShowcase() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="grid items-start gap-x-4 gap-y-10 md:gap-x-6 grid-cols-[minmax(0,81fr)_minmax(0,144fr)] lg:grid-cols-[minmax(0,256fr)_minmax(0,81fr)_minmax(0,144fr)]"
+        className="grid items-start gap-x-4 gap-y-10 md:gap-x-6 grid-cols-[minmax(0,81fr)_minmax(0,144fr)] lg:grid-cols-[minmax(0,144fr)_minmax(0,256fr)_minmax(0,81fr)_minmax(0,144fr)]"
       >
-        <div className="col-span-2 lg:col-span-1">{card(wide)}</div>
-        <div>{card(vertical)}</div>
-        <div>{card(square)}</div>
+        <div className="col-span-2 lg:col-span-1">
+          <CoverCard piece={cover} />
+        </div>
+        <div className="col-span-2 lg:col-span-1">{video(wide)}</div>
+        <div>{video(vertical)}</div>
+        <div>{video(square)}</div>
       </motion.div>
     </section>
   );
